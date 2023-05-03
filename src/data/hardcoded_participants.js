@@ -1,9 +1,9 @@
 /* eslint import/no-webpack-loader-syntax: off */
 import mapboxgl from '!mapbox-gl';
 
-const data = [{"lng":-74.74629904893754,"lat":40.167051492570636},
-{"lng":-76.74629904893754,"lat":40.167051492570636},
-{"lng":-78.74629904893754,"lat":40.167051492570636}];
+const data = [{"lng":5.74629904893754,"lat":46.167051492570636},
+{"lng":7.74629904893754,"lat":42.167051492570636},
+{"lng":3.74629904893754,"lat":50.167051492570636}];
 
 const hardcoded_participants = []
 
