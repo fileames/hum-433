@@ -1,4 +1,40 @@
-# Getting Started with Create React App
+# How to add form element?
+At *App.js* 
+1. add constant for the form value
+```
+const [num_participants, setNumParticipantsData] = useState([]);
+```
+2. create handler
+```
+const handleParticipantsChange = (evnt)=>{
+    setNumParticipantsData(evnt.target.value)
+  }
+```
+3. add bootstrap form element with `onChange={handleParticipantsChange}`
+```
+<label for="number_participants" class="form-label">Number of Participants</label>
+              <input type="range" class="form-range" min="1" max="3" step="1" id="number_participants" onChange={handleParticipantsChange}></input>
+```
+3. Give the variable to Map
+```
+<Map num_participants={num_participants}></Map>
+```
+At *Map.js* 
+1. add variable to parameters
+```
+function Map({num_participants}) 
+```
+
+1. add useEffect function. It is called internally whenever the parameter num_participants change
+```
+useEffect(() => {
+        // functionality on map
+    },[num_participants])  // add the name of your variable here
+```
+
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
