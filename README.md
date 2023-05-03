@@ -10,7 +10,7 @@ const handleParticipantsChange = (evnt)=>{
     setNumParticipantsData(evnt.target.value)
   }
 ```
-3. add bootstrap form element with `onChange={handleParticipantsChange}`
+3. add [**bootstrap**](https://getbootstrap.com/docs/5.0/forms/overview/) form element with `onChange={handleParticipantsChange}`
 ```
 <label for="number_participants" class="form-label">Number of Participants</label>
               <input type="range" class="form-range" min="1" max="3" step="1" id="number_participants" onChange={handleParticipantsChange}></input>
