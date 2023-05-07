@@ -220,6 +220,7 @@ function Map({ data, update_ch, setUpdateData, setTotalCostData, setMinCostData,
 
         var hardcoded_participants = hardcoded_values["part"]
         var hardcoded_meetings = hardcoded_values["meet"]
+        var hardcoded_online = hardcoded_values["online"]
         var hardcoded_lines = hardcoded_values["line"]
 
         for (var i = 0; i < hardcoded_participants.length; i++) {
@@ -259,9 +260,20 @@ function Map({ data, update_ch, setUpdateData, setTotalCostData, setMinCostData,
                     var i_c = return_icon(which_t[count], hardcoded_lines[i][j][2])
                     total_cost += i_c[1];
 
-                    map.current.setLayoutProperty(id + "p", 'icon-image', i_c[0]);
-                    map.current.setLayoutProperty(id + "r", 'visibility', 'visible');
-                    map.current.setLayoutProperty(id + "p", 'visibility', 'visible');
+                    if (which_t[count]!=3){
+                        hardcoded_online[i].remove();
+                        map.current.setLayoutProperty(id + "p", 'icon-image', i_c[0]);
+                        map.current.setLayoutProperty(id + "r", 'visibility', 'visible');
+                        map.current.setLayoutProperty(id + "p", 'visibility', 'visible');
+                    }
+                    else{
+                        console.log("ONLINE")
+                        hardcoded_online[i].addTo(map.current);
+                        map.current.setLayoutProperty(id + "r", 'visibility', 'none');
+                        map.current.setLayoutProperty(id + "p", 'visibility', 'none');
+                    }
+
+                    
                     count += 1
                 }
                 else {

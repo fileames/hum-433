@@ -117,6 +117,16 @@
   cursor: pointer;
 }
 
+.marker-online {
+  background-image: linear-gradient(rgba(221, 142, 52, 0.4), rgba(221, 142, 52, 0.4));;
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+   z-index: 100;
+}
+
 .title{
   font-family: 'Chivo';
   font-size: xx-large;
