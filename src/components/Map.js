@@ -5,7 +5,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import hardcoded_values from '../data/hardcoded_values.js'
 import costs from '../data/costs.js'
 import React, { useRef, useEffect, useState } from 'react';
-import calculate_min_max from './helpers.js'
+import { calculate_min_max, ONLINE_HOUR } from './helpers.js'
 
 
 mapboxgl.accessToken = '';
@@ -79,25 +79,25 @@ function add_lines(map, added, setAdded, currentLines) {
 
 }
 
-function return_icon(i) {
+function return_icon(i, km) {
     var icon = ""
     var cost = 0.0
     switch (i) {
         case 0:
             icon = "paris-transilien"
-            cost = costs["train"]
+            cost = costs["train"] * km
             break;
         case 1:
             icon = "airport"
-            cost = costs["plane"]
+            cost = costs["plane"] * km
             break;
         case 2:
             icon = "car"
-            cost = costs["car"]
+            cost = costs["car"] * km
             break;
         case 3:
             icon = "border-dot-13"
-            cost = costs["online"]
+            cost = costs["online"] * ONLINE_HOUR
             break;
         default:
             icon = "border-dot-13"
@@ -135,7 +135,7 @@ function calc_nums(data, num_participants, num_meetings) {
     var num_car = parseInt(data["travel_data"]["car_perc"] * t / 100)
     var num_online = total_lines - num_train - num_plane - num_car
 
-    console.log(num_online, num_car)
+    console.log(total_lines, num_train, num_plane, num_online, num_car)
 
     var which_t = shuffleArray(Array(num_train).fill(0).concat(Array(num_plane).fill(1), Array(num_car).fill(2), Array(num_online).fill(3)))
     console.log(which_t)
@@ -154,8 +154,8 @@ function Map({ data, update_ch, setUpdateData, setTotalCostData, setMinCostData,
     const [lng, setLng] = useState(5.34);
     const [lat, setLat] = useState(46.358);
     const [zoom, setZoom] = useState(4);
-    const [currentNumPart, setcurrentNumPart] = useState(1);
-    const [currentNumMeet, setcurrentNumMeet] = useState(1);
+    const [currentNumPart, setcurrentNumPart] = useState(0);
+    const [currentNumMeet, setcurrentNumMeet] = useState(0);
     const [added, setAdded] = useState(false);
     const [currentLines, setcurrentLines] = useState(new Set(["1-1r", "1-1p"]));
 
@@ -236,7 +236,7 @@ function Map({ data, update_ch, setUpdateData, setTotalCostData, setMinCostData,
                 hardcoded_meetings[i].remove();
         }
 
-        var nums = calc_nums(data, num_participants,  num_meetings)
+        var nums = calc_nums(data, num_participants, num_meetings)
         var which_t = nums["which_t"]
         var count = 0
         console.log(which_t)
@@ -253,22 +253,23 @@ function Map({ data, update_ch, setUpdateData, setTotalCostData, setMinCostData,
         for (var i = 0; i < hardcoded_participants.length; i++) {
             for (var j = 0; j < hardcoded_meetings.length; j++) {
                 var id = (i + 1) + "-" + (j + 1);
-                
+
                 if ((i < num_participants) && (j < num_meetings)) {
 
-                    var i_c = return_icon(which_t[count])
-                    total_cost += i_c[1] * hardcoded_lines[i][j][2];
+                    var i_c = return_icon(which_t[count], hardcoded_lines[i][j][2])
+                    total_cost += i_c[1];
 
                     map.current.setLayoutProperty(id + "p", 'icon-image', i_c[0]);
                     map.current.setLayoutProperty(id + "r", 'visibility', 'visible');
                     map.current.setLayoutProperty(id + "p", 'visibility', 'visible');
+                    count += 1
                 }
                 else {
                     map.current.setLayoutProperty(id + "r", 'visibility', 'none');
                     map.current.setLayoutProperty(id + "p", 'visibility', 'none');
                 }
 
-                count += 1
+                
 
             }
         }
