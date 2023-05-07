@@ -3,7 +3,9 @@ import mapboxgl from '!mapbox-gl';
 import './Map.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import hardcoded_values from '../data/hardcoded_values.js'
+import costs from '../data/costs.js'
 import React, { useRef, useEffect, useState } from 'react';
+import calculate_min_max from './helpers.js'
 
 
 mapboxgl.accessToken = '';
@@ -77,7 +79,76 @@ function add_lines(map, added, setAdded, currentLines) {
 
 }
 
-function Map({ num_participants, num_meetings }) {
+function return_icon(i) {
+    var icon = ""
+    var cost = 0.0
+    switch (i) {
+        case 0:
+            icon = "paris-transilien"
+            cost = costs["train"]
+            break;
+        case 1:
+            icon = "airport"
+            cost = costs["plane"]
+            break;
+        case 2:
+            icon = "car"
+            cost = costs["car"]
+            break;
+        case 3:
+            icon = "border-dot-13"
+            cost = costs["online"]
+            break;
+        default:
+            icon = "border-dot-13"
+            cost = costs["online"]
+    }
+    return [icon, cost]
+}
+
+function shuffleArray(array) {
+    let currentIndex = array.length, randomIndex;
+
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+    }
+
+    return array;
+}
+
+
+
+function calc_nums(data, num_participants, num_meetings) {
+    var total_lines = num_participants * num_meetings
+
+    var t = 100.0 * total_lines / (data["travel_data"]["plane_perc"] + data["travel_data"]["online_perc"] + data["travel_data"]["train_perc"] + data["travel_data"]["car_perc"]);
+    var num_train = parseInt(data["travel_data"]["train_perc"] * t / 100)
+    var num_plane = parseInt(data["travel_data"]["plane_perc"] * t / 100)
+    var num_car = parseInt(data["travel_data"]["car_perc"] * t / 100)
+    var num_online = total_lines - num_train - num_plane - num_car
+
+    console.log(num_online, num_car)
+
+    var which_t = shuffleArray(Array(num_train).fill(0).concat(Array(num_plane).fill(1), Array(num_car).fill(2), Array(num_online).fill(3)))
+    console.log(which_t)
+    return {
+        "num_train": num_train,
+        "num_plane": num_plane,
+        "num_car": num_car,
+        "num_online": num_online,
+        "which_t": which_t
+    }
+}
+
+function Map({ data, update_ch, setUpdateData, setTotalCostData, setMinCostData, setMaxCostData }) {
     const mapContainer = useRef(null);
     const map = useRef(null);
     const [lng, setLng] = useState(5.34);
@@ -88,6 +159,7 @@ function Map({ num_participants, num_meetings }) {
     const [added, setAdded] = useState(false);
     const [currentLines, setcurrentLines] = useState(new Set(["1-1r", "1-1p"]));
 
+    /*
     useEffect(() => {
         console.log(num_participants)
         console.log(num_meetings)
@@ -135,9 +207,76 @@ function Map({ num_participants, num_meetings }) {
         }
         setcurrentLines(sett)
 
-
-
     }, [num_participants, num_meetings])
+    */
+    useEffect(() => {
+        console.log("hey")
+        if (!update_ch) {
+            return
+        }
+
+        var num_participants = data["num_participants"]
+        var num_meetings = data["num_meetings"]
+
+        var hardcoded_participants = hardcoded_values["part"]
+        var hardcoded_meetings = hardcoded_values["meet"]
+        var hardcoded_lines = hardcoded_values["line"]
+
+        for (var i = 0; i < hardcoded_participants.length; i++) {
+            if (i < num_participants)
+                hardcoded_participants[i].addTo(map.current);
+            else
+                hardcoded_participants[i].remove();
+        }
+
+        for (var i = 0; i < hardcoded_meetings.length; i++) {
+            if (i < num_meetings)
+                hardcoded_meetings[i].addTo(map.current);
+            else
+                hardcoded_meetings[i].remove();
+        }
+
+        var nums = calc_nums(data, num_participants,  num_meetings)
+        var which_t = nums["which_t"]
+        var count = 0
+        console.log(which_t)
+
+        if (!map.current) return
+        if (!map.current.isStyleLoaded()) return
+
+        var total_cost = 0.0;
+
+        var a = calculate_min_max(num_participants, num_meetings);
+        setMinCostData(a[0]);
+        setMaxCostData(a[1]);
+
+        for (var i = 0; i < hardcoded_participants.length; i++) {
+            for (var j = 0; j < hardcoded_meetings.length; j++) {
+                var id = (i + 1) + "-" + (j + 1);
+                
+                if ((i < num_participants) && (j < num_meetings)) {
+
+                    var i_c = return_icon(which_t[count])
+                    total_cost += i_c[1] * hardcoded_lines[i][j][2];
+
+                    map.current.setLayoutProperty(id + "p", 'icon-image', i_c[0]);
+                    map.current.setLayoutProperty(id + "r", 'visibility', 'visible');
+                    map.current.setLayoutProperty(id + "p", 'visibility', 'visible');
+                }
+                else {
+                    map.current.setLayoutProperty(id + "r", 'visibility', 'none');
+                    map.current.setLayoutProperty(id + "p", 'visibility', 'none');
+                }
+
+                count += 1
+
+            }
+        }
+
+        setTotalCostData(total_cost)
+        setUpdateData(false)
+
+    }, [update_ch])
 
     useEffect(() => {
         if (map.current) return; // initialize map only once

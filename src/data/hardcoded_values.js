@@ -14,9 +14,13 @@ const meetings = [{ "lng": 8.74629904893754, "lat": 40.167051492570636 },
 const hardcoded_meetings = []
 
 for (var part of meetings) {
+
+    //const el = document.createElement('div');
+    //el.className = 'marker-meeting';
+
     hardcoded_meetings.push(
         new mapboxgl.Marker({
-            color: "#FFFFFF"
+            "color": "#ff2c2c"
         }).setLngLat([part.lng, part.lat])
     )
 }
@@ -24,12 +28,18 @@ for (var part of meetings) {
 const hardcoded_participants = []
 
 for (var part2 of participants) {
+    const el = document.createElement('div');
+    el.className = 'marker-participant';
     hardcoded_participants.push(
-        new mapboxgl.Marker().setLngLat([part2.lng, part2.lat])
+        new mapboxgl.Marker(el).setLngLat([part2.lng, part2.lat])
     )
 }
 
 const hardcoded_lines = []
+
+var options = {
+    units: 'kilometers'
+};
 
 for (var parti of participants) {
     var temp = []
@@ -77,14 +87,17 @@ for (var parti of participants) {
                     'properties': {},
                     'geometry': {
                         'type': 'Point',
-                        'coordinates': origin
+                        'coordinates': arc[250]
                     }
                 }
             ]
         };
+
+        var distance = turf.distance(origin, destination, options);
+
+        console.log(distance)
         
-        temp.push([route, point])
-        
+        temp.push([route, point, distance])
 
     }
     hardcoded_lines.push(temp)
