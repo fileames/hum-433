@@ -76,13 +76,23 @@ for (var part of meetings) {
 }
 
 const hardcoded_participants = []
+const hardcoded_online = []
 
 for (var part2 of participants) {
+
+    const el2 = document.createElement('div');
+    el2.className = 'marker-online';
+    hardcoded_online.push(
+        new mapboxgl.Marker(el2).setLngLat([part2.lng, part2.lat])
+    )
+
     const el = document.createElement('div');
     el.className = 'marker-participant';
     hardcoded_participants.push(
         new mapboxgl.Marker(el).setLngLat([part2.lng, part2.lat])
     )
+
+    
 }
 
 const hardcoded_lines = []
@@ -155,6 +165,7 @@ for (var parti of participants) {
 
 const hardcoded_values = { "part": hardcoded_participants ,
     "meet": hardcoded_meetings,
+    "online":hardcoded_online,
     "line": hardcoded_lines}
 
 export default hardcoded_values;

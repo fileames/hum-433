@@ -6,7 +6,7 @@ import VerticalProgress from './components/VerticalProgress';
 
 function App() {
 
-  const [num_participants, setNumParticipantsData] = useState(1);
+  const [num_participants, setNumParticipantsData] = useState(5);
   const [num_meetings, setMeetingsData] = useState(1);
 
   const [plane_perc, setPlanePercData] = useState(50);
@@ -89,7 +89,7 @@ function App() {
             <label for="number_participants" class="form-label">Number of Participants</label>
             <div class="row">
               <div class="col-sm-10">
-                <input type="range" class="form-range" defaultValue="1" min="1" max="3" step="1" id="number_participants" onChange={handleParticipantsChange}></input></div>
+                <input type="range" class="form-range" defaultValue="5" min="5" max="50" step="5" id="number_participants" onChange={handleParticipantsChange}></input></div>
               <div class="col-sm-2"><p>{num_participants}</p></div>
 
             </div>
@@ -97,7 +97,7 @@ function App() {
             <label for="number_meetings" class="form-label">Number of Meetings</label>
             <div class="row">
               <div class="col-sm-10">
-                <input type="range" class="form-range" defaultValue="1" min="1" max="2" step="1" id="number_meetings" onChange={handleMeetingsChange}></input></div>
+                <input type="range" class="form-range" defaultValue="1" min="1" max="6" step="1" id="number_meetings" onChange={handleMeetingsChange}></input></div>
               <div class="col-sm-2"><p>{num_meetings}</p></div>
 
             </div>
