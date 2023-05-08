@@ -135,6 +135,262 @@ function App() {
           </div>
 
         </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <span class="align-middle">
+              <h6 className='qtext '>An option to reduce environmental costs is make small meeting among members of the network that are nearby.</h6></span>
+          </div>
+          <div class="col-sm-12">
+            <span class="align-middle">
+              <h6 className='qtext '>The average annual carbon footprint per person in some countries is estimated to be a few tons of CO2. This includes emissions from transportation, energy consumption, food production, and other lifestyle factors.</h6></span>
+          </div>
+          <div class="col-sm-12">
+            <span class="align-middle">
+              <h6 className='qtext '>The comparison between The Intergovernmental Panel on Climate Change (IPCC) estimates that each additional ton of CO2 emissions will lead to a global average temperature increase of about 0.0000000000015 to 0.00000000003 degrees Celsius per year. </h6></span>
+          </div>
+          <table>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Direct</td>
+                <td>Direct (non exhaustive)</td>
+                <td>Energy chain</td>
+                <td>Maintenance</td>
+                <td>Vehicle</td>
+                <td>End Of Life</td>
+                <td>TOTAL</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Transportation</td>
+                <td>Other</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Airplane (within Europe average)</td>
+                <td></td>
+                <td>447.2</td>
+                <td>0.0</td>
+                <td>66.8</td>
+                <td>0.0</td>
+                <td>0.7</td>
+                <td>0.0</td>
+                <td>11.3</td>
+                <td>319.2</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Train average Germany</td>
+                <td></td>
+                <td>5.9</td>
+                <td>0.0</td>
+                <td>29.7</td>
+                <td>0.6</td>
+                <td>0.7</td>
+                <td>0.0</td>
+                <td>3.9</td>
+                <td>40.8</td>
+            </tr>
+            <tr>
+                <td>Train average France</td>
+                <td></td>
+                <td>3.3</td>
+                <td>0.0</td>
+                <td>4.8</td>
+                <td>0.5</td>
+                <td>0.6</td>
+                <td>0.0</td>
+                <td>3.3</td>
+                <td>12.5</td>
+            </tr>
+            <tr>
+                <td>Train average Italy</td>
+                <td></td>
+                <td>3.3</td>
+                <td>0.0</td>
+                <td>66.6</td>
+                <td>0.5</td>
+                <td>0.6</td>
+                <td>0.0</td>
+                <td>3.8</td>
+                <td>74.7</td>
+            </tr>
+            <tr>
+                <td>Train average Austria</td>
+                <td></td>
+                <td>5.0</td>
+                <td>0.0</td>
+                <td>3.3</td>
+                <td>0.8</td>
+                <td>1.0</td>
+                <td>0.0</td>
+                <td>5.1</td>
+                <td>15.1</td>
+            </tr>
+            <tr>
+                <td>Train average Switzerland</td>
+                <td></td>
+                <td>0.1</td>
+                <td>0.0</td>
+                <td>0.8</td>
+                <td>0.6</td>
+                <td>0.8</td>
+                <td>0.0</td>
+                <td>4.8</td>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td>Train (average Europe)</td>
+                <td></td>
+                <td>3.497999016</td>
+                <td>0</td>
+                <td>21.04606079</td>
+                <td>0.594832076</td>
+                <td>0.749280067</td>
+                <td>0</td>
+                <td>4.149162048</td>
+                <td>30.02</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Diesel</td>
+                <td>fleet average</td>
+                <td>112.8</td>
+                <td>2.6</td>
+                <td>24.5</td>
+                <td>4.9</td>
+                <td>27.9</td>
+                <td>4.2</td>
+                <td>12.2</td>
+                <td>189.0</td>
+            </tr>
+            <tr>
+                <td>Gasoline</td>
+                <td>fleet average</td>
+                <td>110.3</td>
+                <td>2.6</td>
+                <td>30.2</td>
+                <td>4.2</td>
+                <td>23.4</td>
+                <td>4.2</td>
+                <td>11.2</td>
+                <td>210.6</td>
+            </tr>
+            <tr>
+                <td>Hybrid diesel</td>
+                <td>fleet average</td>
+                <td>75.5</td>
+                <td>1.7</td>
+                <td>25.3</td>
+                <td>3.2</td>
+                <td>17.3</td>
+                <td>2.8</td>
+                <td>9.2</td>
+                <td>139.6</td>
+            </tr>
+            <tr>
+                <td>Hybrid gasoline</td>
+                <td>fleet average</td>
+                <td>99.5</td>
+                <td>2.3</td>
+                <td>26.7</td>
+                <td>4.1</td>
+                <td>22.9</td>
+                <td>3.7</td>
+                <td>10.8</td>
+                <td>160.9</td>
+            </tr>
+            <tr>
+                <td>Average car</td>
+                <td></td>
+                <td>99.5</td>
+                <td>2.3</td>
+                <td>26.7</td>
+                <td>4.1</td>
+                <td>22.9</td>
+                <td>3.7</td>
+                <td>10.8</td>
+                <td>175.0</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Videoconference</td>
+                <td></td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>9.6</td>
+                <td>0.0</td>
+                <td>55.8</td>
+                <td>0.0</td>
+                <td>24.3</td>
+                <td>89.8</td>
+            </tr>
+            <tr>
+                <td>Work online at home (1h)</td>
+                <td> </td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>44.7</td>
+                <td>0.0</td>
+                <td>446.4</td>
+                <td>0.0</td>
+                <td>36.0</td>
+                <td>527.1</td>
+            </tr>
+            <tr>
+                <td>Average work online at home (1h)</td>
+                <td></td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>27.2</td>
+                <td>0.0</td>
+                <td>251.1</td>
+                <td>0.0</td>
+                <td>30.2</td>
+                <td>308.4</td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
   );
