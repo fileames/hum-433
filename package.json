@@ -16,6 +16,7 @@
     "react-leaflet": "^4.2.1",
     "react-scripts": "5.0.1",
     "react-spring": "^9.7.1",
+    "react-tooltip": "^5.11.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

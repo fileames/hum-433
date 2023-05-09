@@ -3,6 +3,9 @@ import Map from './components/Map';
 
 import React, { useRef, useEffect, useState } from 'react';
 import VerticalProgress from './components/VerticalProgress';
+import { participant_info, meeting_info, travel_info } from './data/info_text';
+import { Tooltip } from 'react-tooltip';
+
 
 
 /*<!--
@@ -105,7 +108,13 @@ function App() {
 
 
           <div class="col-sm-4">
-            <label for="number_participants" class="form-label">Number of Participants</label>
+            <label for="number_participants" class="form-label">
+              Number of Participants <span data-tooltip-id="participant_info"
+                data-tooltip-content = {participant_info}
+                data-tooltip-place="top" > 🛈 </span>
+              <Tooltip id="participant_info" />
+            
+            </label>
             <div class="row">
               <div class="col-sm-10">
                 <input type="range" class="form-range" defaultValue="5" min="5" max="50" step="5" id="number_participants" onChange={handleParticipantsChange}></input></div>
@@ -113,14 +122,22 @@ function App() {
 
             </div>
 
-            <label for="number_meetings" class="form-label">Number of Meetings</label>
+            <label for="number_meetings" class="form-label">Number of Meetings <span data-tooltip-id="meeting_info"
+              data-tooltip-content={meeting_info}
+              data-tooltip-place="top" > 🛈 </span>
+              <Tooltip id="meeting_info" /></label>
             <div class="row">
               <div class="col-sm-10">
                 <input type="range" class="form-range" defaultValue="1" min="1" max="6" step="1" id="number_meetings" onChange={handleMeetingsChange}></input></div>
               <div class="col-sm-2"><p>{num_meetings}</p></div>
 
             </div>
-            <h4>Means of Transportation</h4>
+            <p> <b>Means of Transportation</b> <span data-tooltip-id="travel_info"
+              data-tooltip-content={travel_info}
+              data-tooltip-place="top" > 🛈 </span>
+              <Tooltip id="travel_info" /></p>
+
+
             <label for="plane_perc" class="form-label">Plane Percentage</label>
             <div class="row">
               <div class="col-sm-10">
