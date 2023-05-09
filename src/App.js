@@ -171,34 +171,75 @@ function App() {
           </div>
 
         </div>
-        <h3 class="title">How did we estimate the costs?</h3>
-        <p>Some explanation</p>
+        <h3 class="title">Environmental costs of transportation methods</h3>
+        <p>This table shows a comparison between the different transportation methods and online meetings showing the amount of CO2 production in g of CO2 per passenger. For this we standarized the results considering the spatial distance between Lausanne and Munster in Germany as a factor for all transportation methods(609 km)</p>
 
         <div class="row">
+        <div class="col-sm-12">
+            <div class="alert alert-success" role="alert">
+              <h4 class="alert-heading">Variables considered </h4>
+              <p class="mb-0">Direct Emissions: Impacts resulting from the emission of substances via the exhaust system of the vehicle.</p>
+              <p class="mb-0">Energy Production Emissions: Impacts resulting from the production and supply of energy to the vehicle. This refers to diesel, gasoline and compressed gas for vehicles with an internal combustion engine, and hydrogen and electricity for electric vehicles.</p>
+              <p class="mb-0">Maintenance: Impacts resulting from the periodical maintenance of the vehicle (e.g., oil and tires change).</p>
+              <p class="mb-0">Manufacturing: Impacts resulting from the manufacture of the vehicle, including its energy storage components.</p>
+              <p class="mb-0">End of Life: Impacts resulting from the disassembly of the vehicle at the end of its life and treatment of the different waste fractions, including the energy storage components. Does not include credits for recycling. If recycling takes place, the aspect is taken into account via the share of primary and secondary raw materials in the production of the vehicle.</p>
+              <p class="mb-0">Infrastructure Emissions: Emissions produced during the construction, maintenance, and operation of the infrastructure required to support the transportation method.</p>
+            </div>
+          </div>
           <div class="col-sm-6">
             <table class="table">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Direct</th>
-                  <th scope="col">Direct (non exhaustive)</th>
-                  <th scope="col">Energy Chain</th>
+                  <th scope="col">Transportation</th>
+                  <th scope="col">Direct Emissions</th>
+                  <th scope="col">Energy production emissions</th>
                   <th scope="col">Maintenance</th>
-                  <th scope="col">Vehicle</th>
+                  <th scope="col">Manufacturing</th>
                   <th scope="col">End of Life</th>
+                  <th scope="col">Infastructure emissions</th>
                   <th scope="col">Total</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <th scope="row">Airplane</th>
-                  <td >447,2</td>
+                  <td >272,668.364</td>
+                  <td >40,717.864</td>
+                  <td >20.366</td>
+                  <td >402.377</td>
                   <td >0</td>
-                  <td >66.8</td>
+                  <td >6,885.049</td>
+                  <td >320694.018</td>
+                </tr>
+                <tr>
+                  <th scope="row">Train</th>
+                  <td>2,132.905</td>
+                  <td>12,832.836</td>
+                  <td>362.699</td>
+                  <td>456.874</td>
+                  <td>0</td>
+                  <td>2,529.952</td>
+                  <td>18,315.264</td>
+                </tr>
+                <tr>
+                  <th scope="row">Car</th>
+                  <td >62,104.063</td>
+                  <td >16,256.504</td>
+                  <td >2,495.661</td>
+                  <td >13,946.092</td>
+                  <td >2,269.210</td>
+                  <td >6,612.624</td>
+                  <td >103,684.154</td>
+                </tr>
+                <tr>
+                  <th scope="row">Virtual meeting</th>
                   <td >0</td>
-                  <td >0.7</td>
+                  <td >27.155</td>
                   <td >0</td>
-                  <td >11.3</td>
+                  <td >251.088</td>
+                  <td >0</td>
+                  <td >30.171</td>
+                  <td >2,038.872</td>
                 </tr>
               </tbody>
             </table>
@@ -206,51 +247,11 @@ function App() {
 
           <div class="col-sm-6">
             <div class="alert alert-success" role="alert">
-              <h4 class="alert-heading">Airplane </h4>
-              <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-                <p class="mb-0">some explanation on airplane</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-6">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Direct</th>
-                  <th scope="col">Direct (non exhaustive)</th>
-                  <th scope="col">Energy Chain</th>
-                  <th scope="col">Maintenance</th>
-                  <th scope="col">Vehicle</th>
-                  <th scope="col">End of Life</th>
-                  <th scope="col">Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Train average Germany</th>
-                  <td >5.9</td>
-                  <td >0</td>
-                  <td >29.7</td>
-                  <td >0.6</td>
-                  <td >0.7</td>
-                  <td >0</td>
-                  <td >3.9</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="col-sm-6">
-            
-            <div class="card border-warning mb-3" >
-              <div class="card-header">Train</div>
-              <div class="card-body ">
-                <h5 class="card-title">some explanation on airplane</h5>
-                <p class="card-text">Some explanation</p>
-              </div>
+              <h4 class="alert-heading">Results</h4>
+              <p class="mb-0">As shown among the transportation airplanes have the most environmental costs followed by cars and then trains at last being the main contributors direct and energy production emissions.</p>
+              <p class="mb-0">In the case of online meeting the environmental costs are less in comparison but other factors involving the interaction between participants and limitation of the activities that can be done through this method must be taken into account.</p>
+              <p class="mb-0">The comparison between The Intergovernmental Panel on Climate Change (IPCC) estimates that each additional ton of CO2 emissions will lead to a global average temperature increase of about 0.0000000000015 to 0.00000000003 degrees Celsius per year.</p>
+              <p class="mb-0">An option to reduce environmental costs is to make small meetings among members of the network that are nearby.</p>        
             </div>
           </div>
         </div>
