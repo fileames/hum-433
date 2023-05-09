@@ -129,7 +129,12 @@ function shuffleArray(array) {
 function calc_nums(data, num_participants, num_meetings) {
     var total_lines = num_participants * num_meetings
 
-    var t = 100.0 * total_lines / (data["travel_data"]["plane_perc"] + data["travel_data"]["online_perc"] + data["travel_data"]["train_perc"] + data["travel_data"]["car_perc"]);
+    var total_perc = data["travel_data"]["plane_perc"] + data["travel_data"]["online_perc"] + data["travel_data"]["train_perc"] + data["travel_data"]["car_perc"]
+
+    if (total_perc==0){
+        total_perc = 0.000005
+    }
+    var t = 100.0 * total_lines / (total_perc);
     var num_train = parseInt(data["travel_data"]["train_perc"] * t / 100)
     var num_plane = parseInt(data["travel_data"]["plane_perc"] * t / 100)
     var num_car = parseInt(data["travel_data"]["car_perc"] * t / 100)
