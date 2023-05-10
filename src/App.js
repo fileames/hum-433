@@ -253,8 +253,8 @@ function App() {
               <h4 class="alert-heading">Results</h4>
               <p class="mb-0">As shown among the transportation airplanes have the most environmental costs followed by cars and then trains at last being the main contributors direct and energy production emissions.</p>
               <p class="mb-0">In the case of online meeting the environmental costs are less in comparison but other factors involving the interaction between participants and limitation of the activities that can be done through this method must be taken into account.</p>
-              <p class="mb-0">The comparison between The Intergovernmental Panel on Climate Change (IPCC) estimates that each additional ton of CO2 emissions will lead to a global average temperature increase of about 0.0000000000015 to 0.00000000003 degrees Celsius per year.</p>
-              <p class="mb-0">An option to reduce environmental costs is to make small meetings among members of the network that are nearby.</p>
+              <p class="mb-0">The Intergovernmental Panel on Climate Change (IPCC) estimates that each additional ton of CO2 emissions will lead to a global average temperature increase of about 0.0000000000015 to 0.00000000003 degrees Celsius per year.</p>
+              <p class="mb-0">An option to reduce environmental costs is to make small meetings among members of the network that are nearby.</p>        
             </div>
           </div>
         </div>
