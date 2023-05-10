@@ -5,6 +5,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import VerticalProgress from './components/VerticalProgress';
 import { participant_info, meeting_info, travel_info } from './data/info_text';
 import { Tooltip } from 'react-tooltip';
+import { TableauEmbed } from "@stoddabr/react-tableau-embed-live";
 
 
 
@@ -51,7 +52,7 @@ function App() {
     setMeetingsData(parseInt(evnt.target.value))
   }
   const handleTransportChange = (evnt, type_t) => {
-    if (type_t == "p"){
+    if (type_t == "p") {
       setPlanePercData(parseInt(evnt.target.value))
     }
     else if (type_t == "t") {
@@ -63,7 +64,7 @@ function App() {
     else if (type_t == "c") {
       setCarPercData(parseInt(evnt.target.value))
     }
-    console.log(plane_perc, car_perc, train_perc, online_perc)    
+    console.log(plane_perc, car_perc, train_perc, online_perc)
   }
 
   const handleButtonClick = (evnt) => {
@@ -75,7 +76,7 @@ function App() {
       <div class="container">
         <div class="row mt-4 mb-4">
           <div class="col-sm-4">
-          <h4 className='display-4 title'>Academic Network Sustainability Network</h4>
+            <h4 className='display-4 title'>Academic Network Sustainability Network</h4>
           </div>
           <div class="col-sm-8 ">
             <span class="align-middle">
@@ -84,9 +85,10 @@ function App() {
         </div>
         <div class="row">
           <div class="col-sm-7" height="100%">
-            <Map data={{ "num_participants": num_participants ,
+            <Map data={{
+              "num_participants": num_participants,
               "num_meetings": num_meetings,
-              "travel_data":{
+              "travel_data": {
                 "plane_perc": plane_perc,
                 "car_perc": car_perc,
                 "train_perc": train_perc,
@@ -101,19 +103,20 @@ function App() {
           </div>
 
           <div class="col-sm-1">
-            <VerticalProgress progress={total_cost} min_cost={min_cost}  max_cost={max_cost} />
+            <VerticalProgress progress={total_cost} min_cost={min_cost} max_cost={max_cost} />
             <p class="co2">{parseInt(total_cost)}</p>
             <p>Tons of CO<sub>2</sub></p>
-          </div>​
+          </div>
 
 
           <div class="col-sm-4">
+            <h5>Enter the information for your academic network:</h5>
             <label for="number_participants" class="form-label">
               Number of Participants <span data-tooltip-id="participant_info"
-                data-tooltip-content = {participant_info}
+                data-tooltip-content={participant_info}
                 data-tooltip-place="top" > 🛈 </span>
               <Tooltip id="participant_info" />
-            
+
             </label>
             <div class="row">
               <div class="col-sm-10">
@@ -175,7 +178,7 @@ function App() {
         <p>This table shows a comparison between the different transportation methods and online meetings showing the amount of CO2 production in g of CO2 per passenger. For this we standarized the results considering the spatial distance between Lausanne and Munster in Germany as a factor for all transportation methods(609 km)</p>
 
         <div class="row">
-        <div class="col-sm-12">
+          <div class="col-sm-12">
             <div class="alert alert-success" role="alert">
               <h4 class="alert-heading">Variables considered </h4>
               <p class="mb-0">Direct Emissions: Impacts resulting from the emission of substances via the exhaust system of the vehicle.</p>
@@ -251,8 +254,13 @@ function App() {
               <p class="mb-0">As shown among the transportation airplanes have the most environmental costs followed by cars and then trains at last being the main contributors direct and energy production emissions.</p>
               <p class="mb-0">In the case of online meeting the environmental costs are less in comparison but other factors involving the interaction between participants and limitation of the activities that can be done through this method must be taken into account.</p>
               <p class="mb-0">The comparison between The Intergovernmental Panel on Climate Change (IPCC) estimates that each additional ton of CO2 emissions will lead to a global average temperature increase of about 0.0000000000015 to 0.00000000003 degrees Celsius per year.</p>
-              <p class="mb-0">An option to reduce environmental costs is to make small meetings among members of the network that are nearby.</p>        
+              <p class="mb-0">An option to reduce environmental costs is to make small meetings among members of the network that are nearby.</p>
             </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8">
+            <TableauEmbed sourceUrl="https://public.tableau.com/views/mobitool_data/Dashboard1?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link" />
           </div>
         </div>
       </div>

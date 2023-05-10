@@ -14,6 +14,8 @@ function get_color(perc){
 
 function calculate_perc(progress, min_cost, max_cost){
 
+    min_cost = 0
+
     var diff = max_cost - min_cost;
     var d2 = progress - min_cost;
 
