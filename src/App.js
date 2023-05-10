@@ -64,7 +64,6 @@ function App() {
     else if (type_t == "c") {
       setCarPercData(parseInt(evnt.target.value))
     }
-    console.log(plane_perc, car_perc, train_perc, online_perc)
   }
 
   const handleButtonClick = (evnt) => {
@@ -76,7 +75,7 @@ function App() {
       <div class="container">
         <div class="row mt-4 mb-4">
           <div class="col-sm-4">
-            <h4 className='display-4 title'>Academic Network Sustainability Network</h4>
+            <h4 className='display-4 title'>Academic Network Sustainability Simulation</h4>
           </div>
           <div class="col-sm-8 ">
             <span class="align-middle">
@@ -145,28 +144,28 @@ function App() {
             <div class="row">
               <div class="col-sm-10">
                 <input type="range" class="form-range" defaultValue="50" min="0" max="100" step="10" id="plane_perc" onChange={(evnt) => handleTransportChange(evnt, "p")}></input></div>
-              <div class="col-sm-2"><p>{plane_perc}%</p></div>
+              <div class="col-sm-2"></div>
             </div>
 
             <label for="train_perc" class="form-label">Train Percentage</label>
             <div class="row">
               <div class="col-sm-10">
                 <input type="range" class="form-range" defaultValue="50" min="0" max="100" step="10" id="train_perc" onChange={(evnt) => handleTransportChange(evnt, "t")}></input></div>
-              <div class="col-sm-2"><p>{train_perc}%</p></div>
+              <div class="col-sm-2"></div>
             </div>
 
             <label for="car_perc" class="form-label">Car Percentage</label>
             <div class="row">
               <div class="col-sm-10">
                 <input type="range" class="form-range" defaultValue="50" min="0" max="100" step="10" id="car_perc" onChange={(evnt) => handleTransportChange(evnt, "c")}></input></div>
-              <div class="col-sm-2"><p>{car_perc}%</p></div>
+              <div class="col-sm-2"></div>
             </div>
 
             <label for="online_perc" class="form-label">Online Percentage</label>
             <div class="row">
               <div class="col-sm-10">
                 <input type="range" class="form-range" defaultValue="50" min="0" max="100" step="10" id="online_perc" onChange={(evnt) => handleTransportChange(evnt, "o")}></input></div>
-              <div class="col-sm-2"><p>{online_perc}%</p></div>
+              <div class="col-sm-2"></div>
             </div>
 
             <button type="button" class="btn btn-danger" onClick={handleButtonClick}>Update the Map</button>
@@ -181,88 +180,46 @@ function App() {
           <div class="col-sm-12">
             <div class="alert alert-success" role="alert">
               <h4 class="alert-heading">Variables considered </h4>
-              <p class="mb-0">Direct Emissions: Impacts resulting from the emission of substances via the exhaust system of the vehicle.</p>
-              <p class="mb-0">Energy Production Emissions: Impacts resulting from the production and supply of energy to the vehicle. This refers to diesel, gasoline and compressed gas for vehicles with an internal combustion engine, and hydrogen and electricity for electric vehicles.</p>
-              <p class="mb-0">Maintenance: Impacts resulting from the periodical maintenance of the vehicle (e.g., oil and tires change).</p>
-              <p class="mb-0">Manufacturing: Impacts resulting from the manufacture of the vehicle, including its energy storage components.</p>
-              <p class="mb-0">End of Life: Impacts resulting from the disassembly of the vehicle at the end of its life and treatment of the different waste fractions, including the energy storage components. Does not include credits for recycling. If recycling takes place, the aspect is taken into account via the share of primary and secondary raw materials in the production of the vehicle.</p>
-              <p class="mb-0">Infrastructure Emissions: Emissions produced during the construction, maintenance, and operation of the infrastructure required to support the transportation method.</p>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Transportation</th>
-                  <th scope="col">Direct Emissions</th>
-                  <th scope="col">Energy production emissions</th>
-                  <th scope="col">Maintenance</th>
-                  <th scope="col">Manufacturing</th>
-                  <th scope="col">End of Life</th>
-                  <th scope="col">Infastructure emissions</th>
-                  <th scope="col">Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Airplane</th>
-                  <td >272,668.364</td>
-                  <td >40,717.864</td>
-                  <td >20.366</td>
-                  <td >402.377</td>
-                  <td >0</td>
-                  <td >6,885.049</td>
-                  <td >320694.018</td>
-                </tr>
-                <tr>
-                  <th scope="row">Train</th>
-                  <td>2,132.905</td>
-                  <td>12,832.836</td>
-                  <td>362.699</td>
-                  <td>456.874</td>
-                  <td>0</td>
-                  <td>2,529.952</td>
-                  <td>18,315.264</td>
-                </tr>
-                <tr>
-                  <th scope="row">Car</th>
-                  <td >62,104.063</td>
-                  <td >16,256.504</td>
-                  <td >2,495.661</td>
-                  <td >13,946.092</td>
-                  <td >2,269.210</td>
-                  <td >6,612.624</td>
-                  <td >103,684.154</td>
-                </tr>
-                <tr>
-                  <th scope="row">Virtual meeting</th>
-                  <td >0</td>
-                  <td >27.155</td>
-                  <td >0</td>
-                  <td >251.088</td>
-                  <td >0</td>
-                  <td >30.171</td>
-                  <td >2,038.872</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="col-sm-6">
-            <div class="alert alert-success" role="alert">
-              <h4 class="alert-heading">Results</h4>
-              <p class="mb-0">As shown among the transportation airplanes have the most environmental costs followed by cars and then trains at last being the main contributors direct and energy production emissions.</p>
-              <p class="mb-0">In the case of online meeting the environmental costs are less in comparison but other factors involving the interaction between participants and limitation of the activities that can be done through this method must be taken into account.</p>
-              <p class="mb-0">The Intergovernmental Panel on Climate Change (IPCC) estimates that each additional ton of CO2 emissions will lead to a global average temperature increase of about 0.0000000000015 to 0.00000000003 degrees Celsius per year.</p>
-              <p class="mb-0">An option to reduce environmental costs is to make small meetings among members of the network that are nearby.</p>        
+              <p class="mb-0"><b>Direct Emissions:</b>Impacts resulting from the emission of substances via the exhaust system of the vehicle.</p>
+              <p class="mb-0"><b>Energy Production Emissions:</b> Impacts resulting from the production and supply of energy to the vehicle. This refers to diesel, gasoline and compressed gas for vehicles with an internal combustion engine, and hydrogen and electricity for electric vehicles.</p>
+              <p class="mb-0"><b>Maintenance:</b> Impacts resulting from the periodical maintenance of the vehicle (e.g., oil and tires change).</p>
+              <p class="mb-0"><b>Manufacturing:</b> Impacts resulting from the manufacture of the vehicle, including its energy storage components.</p>
+              <p class="mb-0"><b>End of Life:</b> Impacts resulting from the disassembly of the vehicle at the end of its life and treatment of the different waste fractions, including the energy storage components. Does not include credits for recycling. If recycling takes place, the aspect is taken into account via the share of primary and secondary raw materials in the production of the vehicle.</p>
+              <p class="mb-0"><b>Infrastructure Emissions:</b> Emissions produced during the construction, maintenance, and operation of the infrastructure required to support the transportation method.</p>
             </div>
           </div>
         </div>
+
         <div class="row">
-          <div class="col-sm-8">
+          <h5 class="title">What are the numbers?</h5>
+          <div class="col-sm-12">
+            <ul>
+              <li><p class="mb-0  align-text">As shown among the transportation airplanes have the most environmental costs followed by cars and then trains at last being the main contributors direct and energy production emissions.</p></li>
+              <li><p class="mb-0  align-text">In the case of online meeting the environmental costs are less in comparison but other factors involving the interaction between participants and limitation of the activities that can be done through this method must be taken into account.</p></li>
+              <li><p class="mb-0  align-text">You can find more information on the <a href="https://www.mobitool.ch/fr/info/facteurs-mobitool-29.html">Mobitool website </a>.</p></li>
+            </ul>
+            <p class="mb-0  align-text">You can find interactive packed bubble chart and tree map visualizations of CO<sub>2</sub>:</p>
+
+          </div>
+          <div class="col-sm-12">
             <TableauEmbed sourceUrl="https://public.tableau.com/views/mobitool_data/Dashboard1?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link" />
           </div>
         </div>
+
+        <div class="spacer"></div>
+        <div class="row">
+          <div class="col-sm-12">
+            <h5 class="title">Did you know?</h5>
+            <ul>
+              <li><p class="mb-0  align-text">The Intergovernmental Panel on Climate Change (IPCC) estimates that each additional ton of CO2 emissions will lead to a global average temperature increase of about 0.0000000000015 to 0.00000000003 degrees Celsius per year.</p></li>
+              <li><p class="mb-0  align-text" >An option to reduce environmental costs is to make small meetings among members of the network that are nearby.</p> </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="spacer"></div>
+      <div class="text-center p-4" style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}>
+        2023:  Created for <a class="text-reset fw-bold" href="https://edu.epfl.ch/coursebook/en/how-people-learn-designing-learning-tools-ii-HUM-433">How People Learn Course, EPFL </a>
       </div>
     </div>
   );

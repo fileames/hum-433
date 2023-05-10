@@ -23,7 +23,6 @@ function add_lines(map, added, setAdded, currentLines) {
                 var point = hardcoded_lines[i][j][1];
 
                 var id = (i + 1) + "-" + (j + 1);
-                console.log(id)
 
                 if (!map.getSource('route' + id)) {
                     map.addSource('route' + id, {
@@ -131,7 +130,7 @@ function calc_nums(data, num_participants, num_meetings) {
 
     var total_perc = data["travel_data"]["plane_perc"] + data["travel_data"]["online_perc"] + data["travel_data"]["train_perc"] + data["travel_data"]["car_perc"]
 
-    if (total_perc==0){
+    if (total_perc == 0) {
         total_perc = 0.000005
     }
     var t = 100.0 * total_lines / (total_perc);
@@ -140,10 +139,20 @@ function calc_nums(data, num_participants, num_meetings) {
     var num_car = parseInt(data["travel_data"]["car_perc"] * t / 100)
     var num_online = total_lines - num_train - num_plane - num_car
 
-    console.log(total_lines, num_train, num_plane, num_online, num_car)
+    if (num_online != 0 && data["travel_data"]["online_perc"] == 0) {
+        if (num_train != 0) {
+            num_train += num_online
+        }
+        else if (num_plane != 0) {
+            num_plane += num_online
+        }
+        else if (num_car != 0) {
+            num_car += num_online
+        }
+        num_online = 0
+    }
 
     var which_t = shuffleArray(Array(num_train).fill(0).concat(Array(num_plane).fill(1), Array(num_car).fill(2), Array(num_online).fill(3)))
-    console.log(which_t)
     return {
         "num_train": num_train,
         "num_plane": num_plane,
@@ -215,7 +224,8 @@ function Map({ data, update_ch, setUpdateData, setTotalCostData, setMinCostData,
     }, [num_participants, num_meetings])
     */
     useEffect(() => {
-        console.log("hey")
+
+
         if (!update_ch) {
             return
         }
@@ -231,8 +241,11 @@ function Map({ data, update_ch, setUpdateData, setTotalCostData, setMinCostData,
         for (var i = 0; i < hardcoded_participants.length; i++) {
             if (i < num_participants)
                 hardcoded_participants[i].addTo(map.current);
-            else
+            else {
                 hardcoded_participants[i].remove();
+                hardcoded_online[i].remove();
+            }
+
         }
 
         for (var i = 0; i < hardcoded_meetings.length; i++) {
@@ -245,7 +258,6 @@ function Map({ data, update_ch, setUpdateData, setTotalCostData, setMinCostData,
         var nums = calc_nums(data, num_participants, num_meetings)
         var which_t = nums["which_t"]
         var count = 0
-        console.log(which_t)
 
         if (!map.current) return
         if (!map.current.isStyleLoaded()) return
@@ -256,6 +268,8 @@ function Map({ data, update_ch, setUpdateData, setTotalCostData, setMinCostData,
         setMinCostData(a[0]);
         setMaxCostData(a[1]);
 
+        var added = Array(num_participants).fill(false);
+
         for (var i = 0; i < hardcoded_participants.length; i++) {
             for (var j = 0; j < hardcoded_meetings.length; j++) {
                 var id = (i + 1) + "-" + (j + 1);
@@ -265,28 +279,31 @@ function Map({ data, update_ch, setUpdateData, setTotalCostData, setMinCostData,
                     var i_c = return_icon(which_t[count], hardcoded_lines[i][j][2])
                     total_cost += i_c[1];
 
-                    if (which_t[count]!=3){
-                        hardcoded_online[i].remove();
+                    if (which_t[count] != 3) {
+                        if (!added[i])
+                            hardcoded_online[i].remove();
                         map.current.setLayoutProperty(id + "p", 'icon-image', i_c[0]);
                         map.current.setLayoutProperty(id + "r", 'visibility', 'visible');
                         map.current.setLayoutProperty(id + "p", 'visibility', 'visible');
                     }
-                    else{
-                        console.log("ONLINE")
-                        hardcoded_online[i].addTo(map.current);
+                    else {
+                        if (!added[i])
+                            hardcoded_online[i].addTo(map.current);
+                        added[i] = true
                         map.current.setLayoutProperty(id + "r", 'visibility', 'none');
                         map.current.setLayoutProperty(id + "p", 'visibility', 'none');
                     }
-
-                    
                     count += 1
                 }
                 else {
+                    //
+                    if (!added[i])
+                        hardcoded_online[i].remove();
                     map.current.setLayoutProperty(id + "r", 'visibility', 'none');
                     map.current.setLayoutProperty(id + "p", 'visibility', 'none');
                 }
 
-                
+
 
             }
         }

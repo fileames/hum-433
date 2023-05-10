@@ -19,8 +19,6 @@ function calculate_perc(progress, min_cost, max_cost){
     var diff = max_cost - min_cost;
     var d2 = progress - min_cost;
 
-    console.log(max_cost, min_cost, progress, d2, diff, parseInt(d2 * 100.0 / diff))
-
     if(progress == 0.0){
         return 0
     }

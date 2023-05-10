@@ -144,3 +144,16 @@
   font-family: 'Chivo';
   font-weight: 400;
 }
+
+
+.alert>p{
+  text-align: left;
+}
+
+.spacer{
+  height: 10vmin;
+}
+
+.align-text{
+text-align: left;
+}
