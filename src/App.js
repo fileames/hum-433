@@ -104,7 +104,7 @@ function App() {
           <div class="col-sm-1">
             <VerticalProgress progress={total_cost} min_cost={min_cost} max_cost={max_cost} />
             <p class="co2">{parseInt(total_cost)}</p>
-            <p>Tons of CO<sub>2</sub></p>
+            <p>g of CO<sub>2</sub></p>
           </div>
 
 
@@ -173,9 +173,22 @@ function App() {
           </div>
 
         </div>
-        <h3 class="title">Environmental costs of transportation methods</h3>
-        <p>This table shows a comparison between the different transportation methods and online meetings showing the amount of CO2 production in g of CO2 per passenger. For this we standarized the results considering the spatial distance between Lausanne and Munster in Germany as a factor for all transportation methods(609 km)</p>
-
+        <div class="row">
+          <div class="col-sm-12">
+            <h5 class="title">How it works?</h5>
+            <ul>
+              <li><p class="mb-0  align-text">The percentage bar is an indicator of how "bad" the actual setting is compared to all the possible settings available to your choice.</p></li>
+              <li><p class="mb-0  align-text">The means of transportation bars are proportional to each other (e.g. if all set at the minimum it will be 25% each).</p></li>
+              <li><p class="mb-0  align-text">When you click "Update the map," the distribution of means of transportation among the participants will be randomized. As a result, it is possible to obtain variable results even with the same settings.</p></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <h5 class="title">What are the numbers?</h5>
+          <div class="col-sm-12">
+            <p class="mb-0  align-text">Our simulation and infographic are based on<a href="https://www.mobitool.ch/fr/info/facteurs-mobitool-29.html">Mobitool website </a> data. European meetings only have been considered for the purposes of the tool</p>
+            <p class="mb-0  align-text"></p>
+        </div>
         <div class="row">
           <div class="col-sm-12">
             <div class="alert alert-success" role="alert">
@@ -187,24 +200,15 @@ function App() {
               <p class="mb-0"><b>End of Life:</b> Impacts resulting from the disassembly of the vehicle at the end of its life and treatment of the different waste fractions, including the energy storage components. Does not include credits for recycling. If recycling takes place, the aspect is taken into account via the share of primary and secondary raw materials in the production of the vehicle.</p>
               <p class="mb-0"><b>Infrastructure Emissions:</b> Emissions produced during the construction, maintenance, and operation of the infrastructure required to support the transportation method.</p>
             </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <h5 class="title">What are the numbers?</h5>
-          <div class="col-sm-12">
-            <ul>
-              <li><p class="mb-0  align-text">As shown among the transportation airplanes have the most environmental costs followed by cars and then trains at last being the main contributors direct and energy production emissions.</p></li>
-              <li><p class="mb-0  align-text">In the case of online meeting the environmental costs are less in comparison but other factors involving the interaction between participants and limitation of the activities that can be done through this method must be taken into account.</p></li>
-              <li><p class="mb-0  align-text">You can find more information on the <a href="https://www.mobitool.ch/fr/info/facteurs-mobitool-29.html">Mobitool website </a>.</p></li>
-            </ul>
             <p class="mb-0  align-text">You can find interactive packed bubble chart and tree map visualizations of CO<sub>2</sub>:</p>
-
           </div>
           <div class="col-sm-12">
             <TableauEmbed sourceUrl="https://public.tableau.com/views/mobitool_data/Dashboard1?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link" />
           </div>
+          <p class="mb-0  align-text">Among various modes of transportation, <b>airplanes incur the highest environmental costs</b>, followed by cars, and finally trains, with direct emissions and energy production emissions being the primary contributing factors.</p>
+          <p class="mb-0  align-text">When it comes to online meetings, the environmental costs are relatively lower. However, it is important to consider other factors such as participant interaction and limitations on activities that can be carried out through this method.</p>
         </div>
+      </div>
 
         <div class="spacer"></div>
         <div class="row">
@@ -220,6 +224,9 @@ function App() {
       <div class="spacer"></div>
       <div class="text-center p-4" style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}>
         2023:  Created for <a class="text-reset fw-bold" href="https://edu.epfl.ch/coursebook/en/how-people-learn-designing-learning-tools-ii-HUM-433">How People Learn Course, EPFL </a>
+        <br/>
+        Created by: Yasmin El Euch, Elif Sema Balcioglu, Davide Romano, Oliver Pineda Suarez
+
       </div>
     </div>
   );
