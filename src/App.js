@@ -233,9 +233,9 @@ function App() {
       <div class="text-center p-4" style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}>
         2023:  Created for <a class="text-reset fw-bold" href="https://edu.epfl.ch/coursebook/en/how-people-learn-designing-learning-tools-ii-HUM-433">How People Learn Course, EPFL </a>
         <br/>
-        Created by: Yasmin El Euch, <a href="https://www.linkedin.com/in/elif-sema-balc%C4%B1o%C4%9Flu-70a712146/">Elif Sema Balcioglu</a>, Davide Romano, Oliver Pineda Suarez
+        Created by: Yasmin El Euch, <a class="text-reset fw-bold"  href="https://www.linkedin.com/in/elif-sema-balc%C4%B1o%C4%9Flu-70a712146/">Elif Sema Balcioglu</a>, Davide Romano, Oliver Pineda Suarez
         <br />
-        With the help of: <a href="https://people.epfl.ch/julian.shillcock?lang=en">Julian Charles Shillcock</a>
+        With the help of: <a class="text-reset fw-bold" href="https://people.epfl.ch/julian.shillcock?lang=en">Julian Charles Shillcock</a>
 
       </div>
     </div>
