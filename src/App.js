@@ -6,6 +6,10 @@ import VerticalProgress from './components/VerticalProgress';
 import { participant_info, meeting_info, travel_info } from './data/info_text';
 import { Tooltip } from 'react-tooltip';
 import { TableauEmbed } from "@stoddabr/react-tableau-embed-live";
+import plane_image from './assets/plane.PNG'
+import car_image from './assets/car.PNG'
+import online_image from './assets/online.PNG'
+import train_image from './assets/train.PNG'
 
 
 
@@ -104,7 +108,7 @@ function App() {
           <div class="col-sm-1">
             <VerticalProgress progress={total_cost} min_cost={min_cost} max_cost={max_cost} />
             <p class="co2">{parseInt(total_cost)}</p>
-            <p>g of CO<sub>2</sub></p>
+            <p>grams of CO<sub>2</sub></p>
           </div>
 
 
@@ -178,16 +182,19 @@ function App() {
             <h5 class="title">How it works?</h5>
             <ul>
               <li><p class="mb-0  align-text">The percentage bar is an indicator of how "bad" the actual setting is compared to all the possible settings available to your choice.</p></li>
-              <li><p class="mb-0  align-text">The means of transportation bars are proportional to each other (e.g. if all set at the minimum it will be 25% each).</p></li>
+              <li><p class="mb-0  align-text">The means of transportation bars are proportional to each other (e.g. if all set to same level it will be 25% each). If all are zero, no one is participating in any of the meetings. If any of the levels are 0, weight is distributed among others.</p></li>
               <li><p class="mb-0  align-text">When you click "Update the map," the distribution of means of transportation among the participants will be randomized. As a result, it is possible to obtain variable results even with the same settings.</p></li>
             </ul>
+            <p><img src={plane_image} width="30vh" />: Travel by plane <img src={train_image} width="30vh" />: Travel by train <img src={car_image} width="30vh" />: Travel by car <img src={online_image} width="30vh" />: Attend meeting virtually</p>
           </div>
+          <div class="spacer5"></div>
         </div>
         <div class="row">
           <h5 class="title">What are the numbers?</h5>
           <div class="col-sm-12">
-            <p class="mb-0  align-text">Our simulation and infographic are based on<a href="https://www.mobitool.ch/fr/info/facteurs-mobitool-29.html">Mobitool website </a> data. European meetings only have been considered for the purposes of the tool</p>
+            <p class="mb-0  align-text">Our simulation and infographic are based on<a href="https://www.mobitool.ch/fr/info/facteurs-mobitool-29.html">Mobitool website </a> data. Only European meetings have been considered for the purposes of the tool.</p>
             <p class="mb-0  align-text"></p>
+            <div class="spacer5"></div>
         </div>
         <div class="row">
           <div class="col-sm-12">
@@ -205,12 +212,13 @@ function App() {
           <div class="col-sm-12">
             <TableauEmbed sourceUrl="https://public.tableau.com/views/mobitool_data/Dashboard1?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link" />
           </div>
+            <div class="spacer5"></div>
           <p class="mb-0  align-text">Among various modes of transportation, <b>airplanes incur the highest environmental costs</b>, followed by cars, and finally trains, with direct emissions and energy production emissions being the primary contributing factors.</p>
           <p class="mb-0  align-text">When it comes to online meetings, the environmental costs are relatively lower. However, it is important to consider other factors such as participant interaction and limitations on activities that can be carried out through this method.</p>
         </div>
       </div>
 
-        <div class="spacer"></div>
+        <div class="spacer5"></div>
         <div class="row">
           <div class="col-sm-12">
             <h5 class="title">Did you know?</h5>
@@ -225,7 +233,9 @@ function App() {
       <div class="text-center p-4" style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}>
         2023:  Created for <a class="text-reset fw-bold" href="https://edu.epfl.ch/coursebook/en/how-people-learn-designing-learning-tools-ii-HUM-433">How People Learn Course, EPFL </a>
         <br/>
-        Created by: Yasmin El Euch, Elif Sema Balcioglu, Davide Romano, Oliver Pineda Suarez
+        Created by: Yasmin El Euch, <a href="https://www.linkedin.com/in/elif-sema-balc%C4%B1o%C4%9Flu-70a712146/">Elif Sema Balcioglu</a>, Davide Romano, Oliver Pineda Suarez
+        <br />
+        With the help of: <a href="https://people.epfl.ch/julian.shillcock?lang=en">Julian Charles Shillcock</a>
 
       </div>
     </div>

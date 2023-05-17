@@ -108,6 +108,13 @@ function return_icon(i, km) {
 function shuffleArray(array) {
     let currentIndex = array.length, randomIndex;
 
+    var seed = 1;
+    function random() {
+        var x = Math.sin(seed++) * 10000;
+        return x - Math.floor(x);
+    }
+
+
     // While there remain elements to shuffle.
     while (currentIndex != 0) {
 
@@ -158,7 +165,8 @@ function calc_nums(data, num_participants, num_meetings) {
         "num_plane": num_plane,
         "num_car": num_car,
         "num_online": num_online,
-        "which_t": which_t
+        "which_t": which_t,
+        "all_zero": (num_train == 0) && (num_plane == 0) && (num_car == 0) && (num_online == 0)
     }
 }
 
@@ -259,6 +267,8 @@ function Map({ data, update_ch, setUpdateData, setTotalCostData, setMinCostData,
         var which_t = nums["which_t"]
         var count = 0
 
+        
+
         if (!map.current) return
         if (!map.current.isStyleLoaded()) return
 
@@ -273,6 +283,13 @@ function Map({ data, update_ch, setUpdateData, setTotalCostData, setMinCostData,
         for (var i = 0; i < hardcoded_participants.length; i++) {
             for (var j = 0; j < hardcoded_meetings.length; j++) {
                 var id = (i + 1) + "-" + (j + 1);
+
+                if (nums["all_zero"] ){
+                    map.current.setLayoutProperty(id + "r", 'visibility', 'none');
+                    map.current.setLayoutProperty(id + "p", 'visibility', 'none');
+                    hardcoded_online[i].remove();
+                    continue
+                }
 
                 if ((i < num_participants) && (j < num_meetings)) {
 
@@ -308,7 +325,12 @@ function Map({ data, update_ch, setUpdateData, setTotalCostData, setMinCostData,
             }
         }
 
-        setTotalCostData(total_cost)
+        if (nums["all_zero"]) {
+            setTotalCostData(0)
+        }
+        else{
+            setTotalCostData(total_cost)
+        }
         setUpdateData(false)
 
     }, [update_ch])

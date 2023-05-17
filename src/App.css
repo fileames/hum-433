@@ -154,6 +154,10 @@
   height: 10vmin;
 }
 
+.spacer5{
+  height: 5vmin;
+}
+
 .align-text{
 text-align: left;
 }
