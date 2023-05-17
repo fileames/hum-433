@@ -192,7 +192,7 @@ function App() {
         <div class="row">
           <h5 class="title">What are the numbers?</h5>
           <div class="col-sm-12">
-            <p class="mb-0  align-text">Our simulation and infographic are based on<a href="https://www.mobitool.ch/fr/info/facteurs-mobitool-29.html">Mobitool website </a> data. Only European meetings have been considered for the purposes of the tool.</p>
+            <p class="mb-0  align-text">Our simulation and infographic are based on <a href="https://www.mobitool.ch/fr/info/facteurs-mobitool-29.html">Mobitool website </a> data. Only European meetings have been considered for the purposes of the tool.</p>
             <p class="mb-0  align-text"></p>
             <div class="spacer5"></div>
         </div>
